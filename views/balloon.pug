@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p Deepika Alapati
+   - var result = [{"balloon_color":"black","balloon_size":7,"balloon_type":"large"},{"balloon_color":"blue","balloon_size":5,"balloon_type":"small"},{"balloon_color":"purple","balloon_size":10,"balloon_type":"medium"}]
+  div.container-fluid
+     div.row
+        each item,index in result
+            div.col-sm-2(onclick=`buy(${index})`) Balloon Color: #{item["balloon_color"]}  <br>  Balloon size: #{item["balloon_size"]} <br> Balloon type: #{item["balloon_type"]} 
+  script.
+      function buy(index){
+         alert("you purchased item "+(index+1))
+      }
+  
+  
+  
+
