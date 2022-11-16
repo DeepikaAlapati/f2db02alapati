@@ -35,9 +35,9 @@ exports.Balloon_detail = async function(req, res) {
 //}; 
 
 // Handle Balloon delete form on DELETE. 
-exports.Balloon_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Balloon delete DELETE ' + req.params.id); 
-}; 
+//exports.Balloon_delete = function(req, res) { 
+  //  res.send('NOT IMPLEMENTED: Balloon delete DELETE ' + req.params.id); 
+//}; 
 
 // Handle Balloon update form on PUT. 
 exports.Balloon_update_put = async function(req, res) { 
@@ -72,6 +72,35 @@ exports.Balloon_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 }; 
+
+
+// Handle Costume delete on DELETE. 
+exports.Balloon_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Balloon.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
+
+// Handle a show one view with id specified by query 
+exports.Balloon_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Balloon.findById( req.query.id) 
+        res.render('Balloondetail',  
+{ title: 'Balloon Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
 
 exports.Balloon_create_post = async function(req, res) { 
     console.log(req.body) 
