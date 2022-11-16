@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+.BalloonAttr { 
+  background-color: rgb(227, 137, 237); 
+  width: 120px; 
+} 
+
+.data {
+  border-bottom: 2px solid rgb(73, 183, 73);
+  height: 30px;
+  color: rgb(195, 107, 222);
+  margin-left: 12px;
+}
+
+.detailData {
+  border-bottom: 2px solid rgb(102, 230, 241);
+  height: 30px;
+  color: rgb(73, 144, 153);
+  margin-left: 12px;
+}
