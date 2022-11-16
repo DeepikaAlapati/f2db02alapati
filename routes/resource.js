@@ -32,4 +32,14 @@ router.get('/Balloon', Balloon_controller.Balloon_list);
 router.get('/detail', Balloon_controller.Balloon_view_one_Page); 
 
 
+/* GET create dish page */ 
+router.get('/create', Balloon_controller.Balloon_create_Page); 
+
+/* GET dish update page */ 
+router.get('/update', Balloon_controller.Balloon_update_Page); 
+
+/* GET delete dish page */ 
+router.get('/delete', Balloon_controller.Balloon_delete_Page); 
+ 
+
 module.exports = router; 
