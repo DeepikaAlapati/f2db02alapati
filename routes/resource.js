@@ -27,4 +27,9 @@ router.get('/Balloon/:id', Balloon_controller.Balloon_detail);
 // GET request for list of all Balloon items. 
 router.get('/Balloon', Balloon_controller.Balloon_list); 
 
+
+/* GET detail costume page */ 
+router.get('/detail', Balloon_controller.Balloon_view_one_Page); 
+
+
 module.exports = router; 
