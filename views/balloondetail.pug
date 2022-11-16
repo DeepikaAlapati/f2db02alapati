@@ -1,0 +1,22 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let balloonid = toShow._id 
+  - let balloon_color = toShow.ballon_color 
+  - let balloon_size = toShow.size
+  - let balloon_type = toShow.type 
+  div 
+    div.row 
+      div(class='BalloonAttr mr-3') Balloon ID is: 
+      div #{balloonid} 
+    div.row 
+      div(class='BalloonAttr mr-3') Balloon Color is: 
+      div #{balloon_color} 
+    div.row 
+      div(class='balloonAttr mr-3') Balloon Size is: 
+      div #{balloon_size} 
+    div.row 
+      div(class='BalloonAttr mr-3') Balloon type is: 
+      div #{balloon_type} 
