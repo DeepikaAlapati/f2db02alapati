@@ -26,7 +26,7 @@ exports.Balloon_detail = async function(req, res) {
 
 // for a specific Balloon. 
 //exports.Balloon_detail = function(req, res) { 
-  //  res.send('NOT IMPLEMENTED: Balloon detail: ' + req.params.id); 
+  //res.send('NOT IMPLEMENTED: Balloon detail: ' + req.params.id); 
 //}; 
 
 // Handle Balloon create on POST. 
@@ -38,6 +38,20 @@ exports.Balloon_detail = async function(req, res) {
 //exports.Balloon_delete = function(req, res) { 
   //  res.send('NOT IMPLEMENTED: Balloon delete DELETE ' + req.params.id); 
 //}; 
+
+
+// Handle Costume delete on DELETE. 
+exports.Balloon_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Balloon.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
 
 // Handle Balloon update form on PUT. 
 exports.Balloon_update_put = async function(req, res) { 
@@ -74,18 +88,6 @@ exports.Balloon_view_all_Page = async function(req, res) {
 }; 
 
 
-// Handle Costume delete on DELETE. 
-exports.Balloon_delete = async function(req, res) { 
-    console.log("delete "  + req.params.id) 
-    try { 
-        result = await Balloon.findByIdAndDelete( req.params.id) 
-        console.log("Removed " + result) 
-        res.send(result) 
-    } catch (err) { 
-        res.status(500) 
-        res.send(`{"error": Error deleting ${err}}`); 
-    } 
-}; 
 
 // Handle a show one view with id specified by query 
 exports.Balloon_view_one_Page = async function(req, res) { 
@@ -119,4 +121,40 @@ exports.Balloon_create_post = async function(req, res) {
         res.status(500); 
         res.send(`{"error": ${err}}`); 
     }   
+}; 
+
+exports.italianDish_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('italianDishCreate', { title: 'Dish Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+exports.italianDish_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await italianDish.findById(req.query.id) 
+        res.render('italianDishUpdate', { title: 'Dish Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+
+// Handle a delete one view with id from query 
+exports.italianDish_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await italianDish.findById(req.query.id) 
+        res.render('italianDishDelete', { title: 'Italian Dish Delete', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
 }; 
