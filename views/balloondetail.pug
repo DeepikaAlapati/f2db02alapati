@@ -1,22 +1,23 @@
-extends layout 
- 
-block content 
-  h1= title 
- 
-  - let balloonid = toShow._id 
-  - let balloon_color = toShow.ballon_color 
-  - let balloon_size = toShow.size
-  - let balloon_type = toShow.type 
-  div 
-    div.row 
-      div(class='BalloonAttr mr-3') Balloon ID is: 
-      div #{balloonid} 
-    div.row 
-      div(class='BalloonAttr mr-3') Balloon Color is: 
-      div #{balloon_color} 
-    div.row 
-      div(class='balloonAttr mr-3') Balloon Size is: 
-      div #{balloon_size} 
-    div.row 
-      div(class='BalloonAttr mr-3') Balloon type is: 
-      div #{balloon_type} 
+extends layout
+block content
+  h1= title
+  if (toShow == null) 
+    h2 No instance to delete 
+  else    
+    - let balloonid = toShow._id
+    - let balloon_color = toShow.balloon_color
+    - let balloon_type = toShow.balloon_type
+    - let balloon_size = toShow.balloon_size
+    div
+    div.row
+    div(class='balloonAttr mr-3') balloon ID is:
+    div #{balloonid}
+    div.row
+    div(class='balloonAttr mr-3') balloon Type is:
+    div #{balloon_color}
+    div.row
+    div(class='balloonAttr mr-3') balloon Size is:
+    div #{balloon_type}
+    div.row
+    div(class='balloonAttr mr-3') balloon name is:
+    div #{balloon_size}
