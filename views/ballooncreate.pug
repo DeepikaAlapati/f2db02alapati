@@ -3,25 +3,28 @@ extends layout
 block content 
   h1= title 
  
-  form(id='CostumeForm', action="/resource/costumes", method="POST") 
+  form(id='BalloonForm', action="/resource/Balloon", method="POST")
+    div.form-group
+        label.BalloonAttr(for='balloonid') Balloon id
+        input#balloonid(type='number', name='balloonid') 
     div.form-group 
-        label.costumeAttr(for='costume_type') Costume type 
-        input#costume_type(type='text', name='costume_type') 
+        label.BalloonAttr(for='balloon_color') Balloon color 
+        input#balloon_color(type='text', name='balloon_color') 
     div.form-group 
-        label.costumeAttr(for='size') Costume size 
-        input#size(type='text', name='size') 
+        label.BalloonAttr(for='balloon_size') Balloon size 
+        input#balloon_size(type='number', name='balloon_size') 
     div.form-group 
-        label.costumeAttr(for='cost') Costume cost 
-        input#cost(type='number', name='cost') 
+        label.BalloonAttr(for='balloon_type') Balloon type 
+        input#balloon_type(type='text', name='balloon_type') 
     input(type="submit") 
  
   script. 
-    document.forms['CostumeForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
+    document.forms['BalloonForm'].addEventListener('submit', (event) => { 
+     event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'POST', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+    fetch(event.target.action, { 
+    method: 'POST',
+      body: new URLSearchParams(new FormData(event.target)) 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
@@ -31,5 +34,5 @@ block content
         // TODO handle error 
         alert("Save failed " + error ) 
       }); 
-    }); 
+      }); 
  
