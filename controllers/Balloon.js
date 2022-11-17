@@ -123,10 +123,10 @@ exports.Balloon_create_post = async function(req, res) {
     }   
 }; 
 
-exports.italianDish_create_Page =  function(req, res) { 
+exports.Balloon_create_Page =  function(req, res) { 
     console.log("create view") 
     try{ 
-        res.render('italianDishCreate', { title: 'Dish Create'}); 
+        res.render('BalloonCreate', { title: 'Balloon Create'}); 
     } 
     catch(err){ 
         res.status(500) 
@@ -134,11 +134,11 @@ exports.italianDish_create_Page =  function(req, res) {
     } 
 }; 
 
-exports.italianDish_update_Page =  async function(req, res) { 
+exports.Balloon_update_Page =  async function(req, res) { 
     console.log("update view for item "+req.query.id) 
     try{ 
-        let result = await italianDish.findById(req.query.id) 
-        res.render('italianDishUpdate', { title: 'Dish Update', toShow: result }); 
+        let result = await Balloon.findById(req.query.id) 
+        res.render('BalloonUpdate', { title: 'Balloon Update', toShow: result }); 
     } 
     catch(err){ 
         res.status(500) 
@@ -147,11 +147,11 @@ exports.italianDish_update_Page =  async function(req, res) {
 };
 
 // Handle a delete one view with id from query 
-exports.italianDish_delete_Page = async function(req, res) { 
+exports.Balloon_delete_Page = async function(req, res) { 
     console.log("Delete view for id "  + req.query.id) 
     try{ 
-        result = await italianDish.findById(req.query.id) 
-        res.render('italianDishDelete', { title: 'Italian Dish Delete', toShow: result }); 
+        result = await Balloon.findById(req.query.id) 
+        res.render('BalloonDelete', { title: 'Balloon Delete', toShow: result }); 
     } 
     catch(err){ 
         res.status(500) 
