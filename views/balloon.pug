@@ -2,18 +2,15 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  p Deepika Alapati
-   - var result = bal_results
-  div.container-fluid
-     div.row
-        each item,index in result
-            div.col-sm-2(onclick=`buy(${index})`) Balloon Color: #{item["balloon_color"]}  <br>  Balloon size: #{item["balloon_size"]} <br> Balloon type: #{item["balloon_type"]} 
+  - let balloon =results
+  div(class="container-fluid")
+  div(class="row m-1")
+   each c in balloon
+    - let destination = 'dispatch("/Balloon/update?id=${c._id}")'
+    div(class="row-sm-2" class="m-1") #{c.balloon_color}, #{c.balloon_type}, #{c.balloon_size}
+      button.btn(class="btn-primary ml-1", onclick= destination) Update
   script.
-      function buy(index){
-         alert("you purchased item "+(index+1))
-      }
-  
-  
-  
-
+    function dispatch(path)
+    {
+      window.location.href=path
+    }
