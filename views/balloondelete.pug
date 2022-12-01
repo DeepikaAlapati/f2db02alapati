@@ -39,15 +39,15 @@ block content
       console.log("starting delete") 
       // delete first 
       fetch(actionid, { 
-        method: 'DELETE'     
+        method: 'DELETE'      // Don't need a body for the delete 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
         alert("Delete succeded") 
-        window.location.href='/Balloon' 
+        window.location.href='/hats' 
         // TODO handle body 
       }).catch((error) => { 
         // TODO handle error 
         alert("Delete failed " + error ) 
       }); 
-    } 
+    }
